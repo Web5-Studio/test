@@ -1,0 +1,67 @@
+<html>
+<body>
+
+<p>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var liffID = '2000299573-7JG0Q4xW';
+
+var url = '';
+
+
+liff.init({
+    liffId: liffID
+}).then(function() {
+    console.log('LIFF init');
+  
+    // 這邊開始寫使用其他功能
+    // 引用 LIFF SDK 的頁面，頁面中的 lang 值
+    var liffLang = liff.getLanguage();
+    console.log('LIFF Lang: ' + liffLang);
+    
+    // LIFF SDK 的版本
+    var liffVer = liff.getVersion();
+    console.log('LIFF Version: ' + liffVer);
+    
+    // 回傳是否由 LINE App 存取
+    var liffClient = liff.isInClient();
+    console.log('LIFF Client: ' + liffClient);
+    
+    // 使用者是否登入 LINE 帳號
+    var liffLogin = liff.isLoggedIn();
+    console.log('LIFF LoggedIn: ' + liffLogin);
+    
+    // 回傳使用者作業系統：ios、android、web
+    var liffOS = liff.getOS();
+    console.log('LIFF OS: ' + liffOS);
+    
+    // 使用者的 LINE 版本
+    var LineVer = liff.getLineVersion();
+    console.log('LINE Version:' + LineVer);
+
+    if (!liffLogin) {
+        // 登入
+        console.log('LIFF Login');
+        liff.login({
+            // 使用者登入後要去到哪個頁面
+            redirectUri: url
+        });
+
+    } else if (liffLogin) {
+
+        alert("已登入 Line");
+
+    
+    }
+      
+}).catch(function(error) {
+  console.log(error);
+});
+
+</script>
+</p>
+<div></div>
+
+</body>
+</html>
